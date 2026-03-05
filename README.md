@@ -4,15 +4,15 @@ This project is a modern, serverless web application that generates random motiv
 
 The backend is implemented using AWS Lambda (Python) and accessed through Amazon API Gateway. Each time a user clicks the “Generate Quote” button, the frontend sends a request to the API Gateway, which triggers the Lambda function to select a random quote and return it to the dashboard.
 
-Services used and configurations:
+## Services used and configurations:
 
-AWS Lambda: Configured with Python runtime to handle quote generation and API requests.
+- AWS Lambda: Configured with Python runtime to handle quote generation and API requests.
 
-API Gateway: Configured to expose a REST endpoint for the frontend to call, including CORS headers.
+- API Gateway: Configured to expose a REST endpoint for the frontend to call, including CORS headers.
 
-Frontend: Single-page HTML with embedded CSS and JavaScript for styling, animations, and API integration.
+- Frontend: Single-page HTML with embedded CSS and JavaScript for styling, animations, and API integration.
 
-This setup demonstrates a small-scale serverless architecture with a functional, visually appealing frontend and a cloud-hosted backend API.
+- This setup demonstrates a small-scale serverless architecture with a functional, visually appealing frontend and a cloud-hosted backend API.
 
 
 ## Features
