@@ -8,7 +8,7 @@ The backend is implemented using AWS Lambda (Python) and accessed through Amazon
 
 - AWS Lambda: Configured with Python runtime to handle quote generation and API requests.
 
-- API Gateway: Configured to expose a REST endpoint for the frontend to call, including CORS headers.
+- API Gateway: Configured to expose a HTTP endpoint for the frontend to call, including CORS headers.
 
 - Frontend: Single-page HTML with embedded CSS and JavaScript for styling, animations, and API integration.
 
