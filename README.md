@@ -54,7 +54,10 @@ AWS Lambda Function
 ↓  
 Random Quote Response
 
-![image alt](image-url)
+![image alt](https://github.com/Arjun-Nalge/Random-Quote-Generator/blob/35fd88488fd2c106adc496b4058e7cb3bb32e1bd/architectural-img.png)
 
 ## Author
 Arjun Nalge - DevOps Engineer
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/arjun-nalge-313642398)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/Arjun-Nalge/Random-Quote-Generator.git)
