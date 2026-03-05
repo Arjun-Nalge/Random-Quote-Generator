@@ -60,4 +60,4 @@ Random Quote Response
 Arjun Nalge - DevOps Engineer
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/arjun-nalge-313642398)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)]((https://github.com/Arjun-Nalge/Arjun-Nalge.git))
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/Arjun-Nalge/Arjun-Nalge.git)
