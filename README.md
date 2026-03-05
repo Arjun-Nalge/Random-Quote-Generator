@@ -53,3 +53,8 @@ API Gateway
 AWS Lambda Function  
 ↓  
 Random Quote Response
+
+![image alt](image-url)
+
+## Author
+Arjun Nalge - DevOps Engineer
