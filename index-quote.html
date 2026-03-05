@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Quote Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#4f46e5,#06b6d4);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+transition:1s ease;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
+}
+
+.dashboard{
+width:420px;
+padding:35px;
+border-radius:25px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(25px) saturate(180%);
+border:1px solid rgba(255,255,255,0.35);
+box-shadow:
+0 10px 40px rgba(0,0,0,0.25),
+inset 0 0 25px rgba(255,255,255,0.25);
+text-align:center;
+animation:float 5s ease-in-out infinite;
+}
+
+h1{
+margin-top:0;
+font-size:32px;
+font-weight:600;
+color:white;
+}
+
+.subtitle{
+color:white;
+margin-bottom:25px;
+}
+
+button{
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.4);
+color:white;
+padding:14px 32px;
+font-size:16px;
+border-radius:14px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+box-shadow:
+0 4px 15px rgba(0,0,0,0.2),
+inset 0 0 10px rgba(255,255,255,0.3);
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:center;
+align-items:center;
+visibility:hidden;
+opacity:0;
+transition:opacity 0.4s ease;
+overflow:hidden;
+}
+
+.modal-content{
+width:380px;
+padding:30px;
+border-radius:20px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,0.35);
+color:white;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+transform:scale(0.7);
+opacity:0;
+transition:all 0.4s ease;
+z-index:2;
+}
+
+.modal.active{
+visibility:visible;
+opacity:1;
+}
+
+.modal.active .modal-content{
+transform:scale(1);
+opacity:1;
+}
+
+#popupQuote{
+font-size:22px;
+font-weight:500;
+line-height:1.6;
+}
+
+/* Celebration Particles */
+.confetti{
+position:absolute;
+top:50%;
+left:50%;
+opacity:0.9;
+animation:explode 2s ease-out forwards;
+}
+
+@keyframes explode{
+0%{
+transform:translate(-50%,-50%) scale(0.5);
+opacity:1;
+}
+100%{
+transform:translate(var(--x), var(--y)) scale(1.2);
+opacity:0;
+}
+}
+
+.close-btn{
+margin-top:25px;
+padding:10px 20px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+background:rgba(255,255,255,0.3);
+color:white;
+font-weight:600;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>Quote Dashboard</h1>
+
+<div class="subtitle">
+Random Quote Generator
+</div>
+
+<button onclick="getQuote()">
+Generate Quote
+</button>
+
+</div>
+
+<div class="modal" id="quoteModal">
+<div class="modal-content">
+<div id="popupQuote">Loading...</div>
+<button class="close-btn" onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<script>
+
+let gradients = [
+"linear-gradient(135deg,#4f46e5,#06b6d4)",
+"linear-gradient(135deg,#ff7e5f,#feb47b)",
+"linear-gradient(135deg,#43cea2,#185a9d)",
+"linear-gradient(135deg,#ff9966,#ff5e62)",
+"linear-gradient(135deg,#7f00ff,#e100ff)",
+"linear-gradient(135deg,#00c6ff,#0072ff)",
+"linear-gradient(135deg,#f7971e,#ffd200)",
+"linear-gradient(135deg,#11998e,#38ef7d)"
+];
+
+async function getQuote() {
+
+let response = await fetch(
+"https://nkue7661q5.execute-api.us-east-1.amazonaws.com/quote"
+);
+
+let data = await response.json();
+
+let randomGradient =
+gradients[Math.floor(Math.random()*gradients.length)];
+document.body.style.background = randomGradient;
+
+document.getElementById("popupQuote").innerText = data.quote;
+document.getElementById("quoteModal").classList.add("active");
+
+createCelebration();
+
+}
+
+function closeModal(){
+document.getElementById("quoteModal").classList.remove("active");
+}
+
+/* Different Burst Styles */
+function createCelebration(){
+
+let style = Math.floor(Math.random()*4);
+let particles = 30 + Math.floor(Math.random()*30);
+
+for(let i=0;i<particles;i++){
+
+let confetti = document.createElement("div");
+confetti.classList.add("confetti");
+
+confetti.style.background =
+"hsl(" + Math.random()*360 + ", 80%, 60%)";
+
+/* Different shapes per style */
+if(style === 0){
+confetti.style.width="10px";
+confetti.style.height="10px";
+confetti.style.borderRadius="50%";
+}
+else if(style === 1){
+confetti.style.width="14px";
+confetti.style.height="4px";
+}
+else if(style === 2){
+confetti.style.width="6px";
+confetti.style.height="18px";
+}
+else{
+confetti.style.width="8px";
+confetti.style.height="8px";
+confetti.style.borderRadius="2px";
+}
+
+let x = (Math.random()-0.5) * 500;
+let y = (Math.random()-0.5) * 500;
+
+confetti.style.setProperty('--x', x + "px");
+confetti.style.setProperty('--y', y + "px");
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+confetti.remove();
+},2000);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
