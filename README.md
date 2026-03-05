@@ -54,7 +54,7 @@ AWS Lambda Function
 ↓  
 Random Quote Response
 
-![image alt](https://github.com/Arjun-Nalge/Random-Quote-Generator/blob/35fd88488fd2c106adc496b4058e7cb3bb32e1bd/architectural-img.png)
+![image alt](https://chatgpt.com/backend-api/estuary/content?id=file_0000000024dc71fa915a0e0c33553de7&ts=492420&p=fs&cid=1&sig=5194c4b3430e9db4216b321fade5e38bb7498ac7e5ebd03a9d21f91b921f87be&v=0)
 
 ## Author
 Arjun Nalge - DevOps Engineer
