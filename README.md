@@ -1,20 +1,20 @@
-#Random Quote Generator (Serverless)
+# Random Quote Generator (Serverless)
 A high-performance, cloud-native application delivering motivational insights through a modern, serverless architecture.
 ![alt text](https://img.shields.io/badge/version-1.0.0-blue)
 
 ![alt text](https://img.shields.io/badge/AWS-Lambda%20%7C%20API%20Gateway%20%7C%20DynamoDB%20%7C%20S3-orange?logo=amazon-aws)
 
-##📖 Project Overview
+## 📖 Project Overview
 The Random Quote Generator (Serverless) is a full-stack web application built to demonstrate the efficiency of event-driven cloud computing. By utilizing a decoupled architecture, the project serves a high-fidelity frontend directly from the cloud while executing backend logic only when triggered. This approach ensures near-infinite scalability and cost-optimization.
 The user interface features a premium Glassmorphism design, incorporating smooth animations and asynchronous API communication for a seamless user experience.
 
-##✨ Key Features
+## ✨ Key Features
 Serverless Efficiency: 100% managed infrastructure with zero server maintenance.
 Premium UX/UI: Ultra-modern Glassmorphism dashboard with ambient glow and dynamic gradients.
 Micro-Interactions: Animated quote pop-ups, celebration particles, and responsive design.
 Cloud-Native Logic: Python-based backend logic executed on-demand via AWS Lambda.
 
-##🛠️ Tech Stack & Services
+## 🛠️ Tech Stack & Services
 Frontend Hosting & UI
 Amazon S3: Hosts static web assets (HTML, CSS, JS) for high-speed delivery.
 Technologies: HTML5, Tailwind CSS, JavaScript (ES6+), Canvas API for particle effects.
