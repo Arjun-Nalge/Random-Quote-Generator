@@ -43,21 +43,6 @@ API Layer
 Cloud Platform
 - Amazon Web Services
 
-
-## System Architecture
-
-User Browser  
-↓  
-Frontend Dashboard (HTML)  
-↓  
-API Gateway  
-↓  
-AWS Lambda Function  
-↓  
-Random Quote Response
-
-![image alt](https://github.com/Arjun-Nalge/Random-Quote-Generator/blob/edceea3091e3d6d5367de3fba3efbaa82f0a5afb/archi-img.png)
-
 ## Author
 Arjun Nalge - DevOps Engineer
 
