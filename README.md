@@ -1,7 +1,7 @@
 # Random Quote Generator (Serverless)
 A high-performance, cloud-native application delivering motivational insights through a modern, serverless architecture.
-![alt text](https://img.shields.io/badge/version-1.0.0-blue)
 
+![alt text](https://img.shields.io/badge/version-1.0.0-blue)
 ![alt text](https://img.shields.io/badge/AWS-Lambda%20%7C%20API%20Gateway%20%7C%20DynamoDB%20%7C%20S3-orange?logo=amazon-aws)
 
 ## 📖 Project Overview
