@@ -16,11 +16,16 @@ Cloud-Native Logic: Python-based backend logic executed on-demand via AWS Lambda
 
 ## 🛠️ Tech Stack & Services
 Frontend Hosting & UI
+
 Amazon S3: Hosts static web assets (HTML, CSS, JS) for high-speed delivery.
+
 Technologies: HTML5, Tailwind CSS, JavaScript (ES6+), Canvas API for particle effects.
 API Layer & Compute
+
 Amazon API Gateway: Exposes a secure HTTP endpoint and manages CORS headers.
+
 AWS Lambda: Executes the Python-based backend logic to select and return random quotes.
+
 Data Persistence
 Amazon DynamoDB: Provides a NoSQL data store for logging user requests and quote libraries.
 
