@@ -49,28 +49,34 @@ Arjun Nalge - DevOps Engineer
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/arjun-nalge-313642398)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/Arjun-Nalge/Arjun-Nalge.git)
 
-## 🏗️ System Flow
+## 🏗️ Live Architectural Flow
 
-The application is hosted entirely on AWS, utilizing a 100% serverless stack to ensure high availability and cost-efficiency.
+This diagram illustrates the request-response lifecycle triggered when a user interacts with the **"Generate Quote"** button in the UI.
 
 ```mermaid
 graph TD
-    User((User)) -->|Access URL| S3[Amazon S3 Static Hosting]
-    S3 -->|Serves| UI[Frontend Dashboard]
-    UI -->|API Request| APIG[Amazon API Gateway]
-    APIG -->|Trigger| Lambda[AWS Lambda - Python]
+    User((User)) -->|1. Opens URL| S3[Amazon S3 Static Hosting]
+    S3 -->|2. Serves| Browser[Client Browser]
     
-    subgraph "Data & Logic Layer"
-    Lambda -->|Fetch/Log| DB[(Amazon DynamoDB)]
-    Lambda -->|Process| Logic{Randomizer Engine}
+    subgraph "Frontend Logic (JavaScript)"
+    Browser -->|3. Click Button| JS[Async Fetch Function]
     end
 
-    Logic --> Lambda
-    Lambda -->|JSON Response| APIG
-    APIG -->|Display Quote| UI
-    UI -->|Celebration Effect| User
+    subgraph "AWS Cloud (Serverless Stack)"
+    JS -->|4. HTTP GET| APIG[Amazon API Gateway]
+    APIG -->|5. Trigger| Lambda[AWS Lambda - Python]
+    Lambda -->|6. Selection| Logic{Randomizer Engine}
+    Logic -->|7. JSON Result| APIG
+    end
+
+    APIG -->|8. Data Payload| JS
+    
+    subgraph "UI Update"
+    JS -->|9. Remove Loader| UI[DOM Manipulation]
+    UI -->|10. Transition Animation| View[Glass Card Display]
+    end
 
     style S3 fill:#FF9900,stroke:#fff,color:#fff
     style Lambda fill:#FF9900,stroke:#fff,color:#fff
-    style DB fill:#405B8C,stroke:#fff,color:#fff
     style APIG fill:#8C4FFF,stroke:#fff,color:#fff
+    style View fill:#222,stroke:#fff,color:#fff
