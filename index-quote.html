@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #050505; /* True dark for professional look */
+            /* Deep, sophisticated base color */
+            background-color: #0a0c14; 
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #ffffff;
             height: 100vh;
@@ -17,37 +18,72 @@
             justify-content: center;
             overflow: hidden;
             margin: 0;
+            position: relative;
         }
 
-        /* Ambient background glows */
-        .glow {
+        /* Modern Mesh Gradient Background */
+        .mesh-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0c14 0%, #121421 100%);
+            overflow: hidden;
+        }
+
+        .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(0,0,0,0) 70%);
             border-radius: 50%;
-            z-index: 0;
-            filter: blur(60px);
+            filter: blur(80px);
+            animation: move 20s infinite alternate;
         }
 
-        .glow-1 { top: -10%; left: -10%; }
-        .glow-2 { bottom: -10%; right: -10%; }
+        .blob-1 {
+            top: -100px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.3) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .blob-2 {
+            bottom: -150px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0,0,0,0) 70%);
+            animation-duration: 25s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(0,0,0,0) 70%);
+            animation-duration: 30s;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, 50px) scale(1.1); }
+        }
 
         .glass-card {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 32px;
             padding: 40px;
-            width: 100%;
+            width: 90%;
             max-width: 440px;
             z-index: 10;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Hide text/result area initially */
         #resultArea {
             max-height: 0;
             opacity: 0;
@@ -56,7 +92,7 @@
         }
 
         #resultArea.show {
-            max-height: 300px;
+            max-height: 400px;
             opacity: 1;
             margin-top: 30px;
         }
@@ -75,15 +111,14 @@
             gap: 12px;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .btn-modern:hover {
             transform: translateY(-2px);
-            background: #f0f0f0;
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+            background: #f8fafc;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
         }
-
-        .btn-modern:active { transform: translateY(0); }
 
         .loader {
             width: 20px;
@@ -100,24 +135,39 @@
         .author-text {
             position: absolute;
             bottom: 30px;
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.3);
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.4);
             text-transform: uppercase;
+            font-weight: 500;
         }
 
-        .author-text span { color: rgba(255,255,255,0.7); font-weight: 600; }
+        .author-text span { color: rgba(255,255,255,0.8); font-weight: 700; }
+        
+        /* Subtle texture overlay */
+        .grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
 
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+    <div class="mesh-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="grain"></div>
 
     <div class="glass-card">
         <div class="mb-8">
-            <h1 class="text-2xl font-bold tracking-tight mb-2">Inspiration AI</h1>
-            <p class="text-gray-400 text-sm">Click below to generate a modern insight.</p>
+            <h1 class="text-3xl font-bold tracking-tight mb-2 text-white">Inspiration AI</h1>
+            <p class="text-slate-400 text-sm font-medium">Generate a moment of modern wisdom.</p>
         </div>
 
         <button onclick="fetchQuote()" id="mainBtn" class="btn-modern">
@@ -125,15 +175,14 @@
             <div id="loader" class="loader"></div>
         </button>
 
-        <!-- Result area is hidden by default (max-height 0) -->
         <div id="resultArea">
-            <div class="p-6 rounded-2xl bg-white/5 border border-white/5">
-                <p id="quoteText" class="text-xl font-medium leading-relaxed italic text-gray-200">
-                    "Loading wisdom..."
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <p id="quoteText" class="text-xl font-medium leading-relaxed italic text-slate-100">
+                    "Wisdom is loading..."
                 </p>
-                <div class="mt-4 flex items-center gap-2">
-                    <div class="h-px flex-1 bg-white/10"></div>
-                    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">AI Generated</span>
+                <div class="mt-6 flex items-center gap-3">
+                    <div class="h-[1px] flex-1 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
+                    <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-[0.2em]">Serverless Engine</span>
                 </div>
             </div>
         </div>
@@ -151,33 +200,30 @@
             const quoteText = document.getElementById('quoteText');
             const btn = document.getElementById('mainBtn');
 
-            // 1. Loading State
-            btnLabel.innerText = "Processing";
+            btnLabel.innerText = "Connecting";
             loader.style.display = "block";
             btn.style.pointerEvents = "none";
             btn.style.opacity = "0.8";
 
-            // 2. Hide previous result if visible
             resultArea.classList.remove('show');
 
             try {
+                // Using your existing API endpoint
                 const response = await fetch("https://nkue7661q5.execute-api.us-east-1.amazonaws.com/quote");
                 const data = await response.json();
 
-                // 3. Set text and reveal
                 setTimeout(() => {
                     quoteText.innerText = `"${data.quote}"`;
                     resultArea.classList.add('show');
                     
-                    // Reset button
                     btnLabel.innerText = "Generate Another";
                     loader.style.display = "none";
                     btn.style.pointerEvents = "auto";
                     btn.style.opacity = "1";
-                }, 400); // Slight delay for smooth transition
+                }, 400);
 
             } catch (error) {
-                quoteText.innerText = "The connection failed. Please try again.";
+                quoteText.innerText = "Unable to reach the server. Please try again.";
                 resultArea.classList.add('show');
                 btnLabel.innerText = "Try Again";
                 loader.style.display = "none";
